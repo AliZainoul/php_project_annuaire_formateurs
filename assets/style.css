@@ -1,0 +1,574 @@
+/**
+ * Feuille de style principale pour l'application Annuaire des formateurs
+ *
+ * Ce fichier contient tous les styles CSS utilisés dans l'application,
+ * organisés par sections correspondant aux différentes parties de l'interface.
+ * Chaque classe est documentée avec référence au(x) fichier(s) PHP qui l'utilisent.
+ *
+ * @package     AnnuaireFormateurs
+ * @author      ali.zainoul.az@gmail.com
+ * @version     1.0
+ */
+
+/* Variables globales */
+/**
+ * Définition des variables CSS pour maintenir une cohérence visuelle
+ * Ces variables sont utilisées dans tout le projet
+ * @utilisé dans Tous les fichiers
+ */
+ :root {
+  --primary-color: #4a6cf7;    /* Couleur principale de l'application */
+  --primary-dark: #3a56d4;     /* Variante foncée de la couleur principale */
+  --secondary-color: #6c757d;  /* Couleur secondaire pour les éléments moins importants */
+  --success-color: #28a745;    /* Couleur pour les actions réussies */
+  --danger-color: #dc3545;     /* Couleur pour les actions dangereuses ou erreurs */
+  --warning-color: #ffc107;    /* Couleur pour les avertissements */
+  --info-color: #17a2b8;       /* Couleur pour les informations */
+  --light-color: #f8f9fa;      /* Couleur claire pour les arrière-plans */
+  --dark-color: #343a40;       /* Couleur foncée pour le texte et certains éléments */
+  --body-bg: #f8f9fc;          /* Couleur d'arrière-plan du corps de page */
+  --card-bg: #ffffff;          /* Couleur d'arrière-plan des cartes/conteneurs */
+  --text-color: #333;          /* Couleur principale du texte */
+  --border-color: #e9ecef;     /* Couleur des bordures */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Ombre standard */
+  --transition: all 0.3s ease; /* Transition standard pour les animations */
+}
+
+/* Reset et base */
+/**
+ * Styles de base et réinitialisation pour assurer la cohérence entre navigateurs
+ * @utilisé dans Tous les fichiers
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--body-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  /* @utilisé dans header.php et footer.php pour contenir le contenu */
+}
+
+.main-container {
+  flex: 1;
+  padding: 30px 20px;
+  /* @utilisé dans header.php (ouverture) et footer.php (fermeture) */
+}
+
+/* Header */
+/**
+ * Styles pour l'en-tête de l'application
+ * @utilisé dans header.php
+ */
+.main-header {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  /* @utilisé dans header.php comme conteneur principal de l'en-tête */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  /* @utilisé dans header.php pour organiser le contenu de l'en-tête */
+}
+
+
+/* @utilisé dans header.php pour le logo de l'application */
+.logo h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  /* @utilisé dans header.php pour le titre principal */
+}
+
+.logo h1 i {
+  margin-right: 10px;
+  /* @utilisé dans header.php pour l'icône du logo */
+}
+
+/* @utilisé dans header.php pour la navigation principale */
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  margin-left: 20px;
+}
+
+.main-nav a {
+  color: var(--dark-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  /* @utilisé dans header.php pour les liens de navigation */
+}
+
+.main-nav a i {
+  margin-right: 5px;
+}
+
+.main-nav a:hover {
+  color: var(--primary-color);
+  background-color: rgba(74, 108, 247, 0.05);
+}
+
+.user-welcome {
+  display: flex;
+  align-items: center;
+  color: var(--dark-color);
+  font-weight: 500;
+  /* @utilisé dans header.php pour afficher le nom de l'utilisateur connecté */
+}
+
+.user-welcome i {
+  margin-right: 5px;
+  color: var(--primary-color);
+}
+
+/* Main content */
+/**
+ * Styles pour le contenu principal de l'application
+ * @utilisé dans tous les fichiers de pages (index.php, add.php, update.php, delete.php)
+ */
+main {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: var(--dark-color);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+/* Tableaux */
+/**
+ * Styles pour les tableaux de données
+ * @utilisé principalement dans index.php pour afficher la liste des formateurs
+ */
+.trainers-list {
+  overflow-x: auto;
+  /* @utilisé dans index.php pour contenir le tableau des formateurs */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th, table td {
+  padding: 15px;
+  text-align: left;
+}
+
+table th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+table tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+table tr:last-child {
+  border-bottom: none;
+}
+
+table tr:hover {
+  background-color: rgba(74, 108, 247, 0.05);
+}
+
+/* Formulaires */
+/**
+ * Styles pour les formulaires
+ * @utilisé dans add.php et update.php pour les formulaires d'ajout et de modification
+ */
+.form-trainer {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  /* @utilisé dans add.php et update.php pour le formulaire principal */
+}
+
+.form-group {
+  margin-bottom: 20px;
+  /* @utilisé dans add.php et update.php pour grouper les champs de formulaire */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 16px;
+  transition: var(--transition);
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  /* @utilisé dans add.php, update.php et delete.php pour les boutons d'action */
+}
+
+/* Boutons */
+/**
+ * Styles pour les différents types de boutons
+ * @utilisé dans tous les fichiers de pages pour les actions utilisateur
+ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  transition: var(--transition);
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn i {
+  margin-right: 8px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  /* @utilisé dans index.php (Ajouter), add.php (Ajouter) et update.php (Mettre à jour) */
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+  /* @utilisé dans add.php, update.php et delete.php (Annuler) */
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+.btn-edit {
+  background-color: var(--success-color);
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  /* @utilisé dans index.php pour le bouton de modification */
+}
+
+.btn-edit:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  /* @utilisé dans index.php et delete.php pour les boutons de suppression */
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Messages */
+/**
+ * Styles pour les messages d'information, de succès et d'erreur
+ * @utilisé dans tous les fichiers de pages pour le feedback utilisateur
+ */
+.message {
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 6px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 4px solid #28a745;
+  /* @utilisé dans add.php, update.php et delete.php pour les messages de succès */
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 4px solid #dc3545;
+  /* @utilisé dans add.php, update.php et delete.php pour les messages d'erreur */
+}
+
+.message.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-left: 4px solid #17a2b8;
+  /* @utilisé dans index.php pour les messages d'information */
+}
+
+.message ul {
+  margin: 10px 0 0 20px;
+  padding: 0;
+}
+
+/* Actions */
+/**
+ * Styles pour les conteneurs d'actions
+ * @utilisé dans index.php pour les boutons d'action
+ */
+.actions {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  /* @utilisé dans index.php pour le bouton d'ajout */
+}
+
+td.actions {
+  white-space: nowrap;
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  /* @utilisé dans index.php pour les boutons d'action dans le tableau */
+}
+
+/* Confirmation de suppression */
+/**
+ * Styles pour la page de confirmation de suppression
+ * @utilisé dans delete.php
+ */
+.confirmation {
+  background-color: var(--light-color);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: center;
+  /* @utilisé dans delete.php pour la boîte de confirmation */
+}
+
+.trainer-info {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: 6px;
+  margin: 15px 0;
+  border: 1px solid var(--border-color);
+  text-align: left;
+  /* @utilisé dans delete.php pour afficher les informations du formateur à supprimer */
+}
+
+.trainer-info p {
+  margin: 10px 0;
+}
+
+/* Footer */
+/**
+ * Styles pour le pied de page
+ * @utilisé dans footer.php
+ */
+.main-footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 40px 0 20px;
+  margin-top: auto;
+  /* @utilisé dans footer.php comme conteneur principal du pied de page */
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  /* @utilisé dans footer.php pour organiser le contenu du pied de page */
+}
+
+.footer-info, .footer-links, .footer-contact {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 20px;
+  padding: 0 15px;
+  /* @utilisé dans footer.php pour les différentes sections du pied de page */
+}
+
+.footer-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: white;
+  /* @utilisé dans footer.php pour le titre de l'application */
+}
+
+.footer-links h4, .footer-contact h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: white;
+  /* @utilisé dans footer.php pour les titres des sections */
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  /* @utilisé dans footer.php pour la liste des liens rapides */
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  transition: var(--transition);
+  /* @utilisé dans footer.php pour les liens du pied de page */
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-contact p {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  /* @utilisé dans footer.php pour les informations de contact */
+}
+
+.footer-contact i {
+  margin-right: 10px;
+  color: var(--primary-color);
+  /* @utilisé dans footer.php pour les icônes de contact */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  /* @utilisé dans footer.php pour le copyright */
+}
+
+/* Responsive */
+/**
+ * Styles pour l'adaptation aux différentes tailles d'écran
+ * @utilisé dans tous les fichiers pour assurer la responsivité
+ */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo {
+    margin-bottom: 15px;
+  }
+  
+  .main-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .main-nav li {
+    margin: 5px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-contact p {
+    justify-content: center;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  td.actions {
+    flex-direction: column;
+  }
+}
