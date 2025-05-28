@@ -30,6 +30,11 @@ $errors = [];
 $success = false;
 $trainer = null;
 
+if (!isset($_SESSION['user']) || $_SESSION['role'] !== 'admin'){
+    header('Location: index.php');
+    exit;
+}
+
 // Vérification de l'ID passé en paramètre
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
