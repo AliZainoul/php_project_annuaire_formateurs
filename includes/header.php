@@ -29,6 +29,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <link rel="stylesheet" href="assets/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <!-- En-tête principal avec logo et navigation -->
   <header class="main-header">
